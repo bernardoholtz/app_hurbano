@@ -1,0 +1,92 @@
+<!doctype html>
+<html ng-app="plunker" >
+ 
+ <head>
+    <!-- adding  script files -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"> </script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"> </script>
+    <script src="app.js"></script>
+      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- adding  css files -->
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+           <div class="container" ng-controller="CarouselCtrl">
+                <div class="offsetspan6">
+                     <carousel interval="myInterval">
+                          <slide ng-repeat="slide in slides" active="slide.active">
+                                <img class="image-circle" ng-src="{{slide.image}}"    style="margin:auto;"/>
+                     
+                             </slide>
+                      </carousel>
+                </div>
+            </div> 
+             <div class="row header">
+        <div class="col-md-12">
+          <h2>{{nome}}</h2>
+          <h4>{{local}}</h4>
+          <h5>{{descricao}}</h5>
+        </div>
+       </div>
+        <div id ="capa" class="col-sm-12">
+          <img ng-src={{destaque}} class="img-responsive">
+      </div>
+        
+      <div class="col-sm-2 thumb" ng-repeat="sld in slides">
+          <img ng-src={{sld}} class="img-responsive" ng-click="destacarFoto(sld)">
+       </div>
+        
+           <form class="form-horizontal form">
+        <div class="form-group">
+          <label class="col-sm-3 control-label ltitle">ESCOLHA SUA MELHOR OPÇÃO</label>
+          <label for="saida" class="col-sm-2 control-label lfiltro">SAÍDAS</label>
+          <div class="col-sm-4">
+            <select id="saida" class="form-control">
+              <option ng-repeat="saida in saidas">{{saida}}</option>
+            </select>
+          </div>
+
+          <label for="saida" class="col-sm-1 control-label lfiltro">N DE DIÁRIAS </label>
+          <div class="col-sm-2">
+            <select id="diaria" class="form-control">
+              <option ng-repeat="diaria in diarias">{{diaria}}</option>
+            </select>
+          </div>
+        </div>
+        
+      </form>
+
+      
+      <div ng-repeat="op in opcoes">
+        <div class="col-sm-5 grid1">
+          <h3>{{op.title}}</h3>
+          <p>{{op.description}}</p>
+        </div>
+        <div class="col-sm-2 grid2">
+          <h3>Saídas:</h3>
+          <p ng-repeat="saida in op.from">{{saida}}</p>
+        </div>
+        <div class="col-sm-2 grid2">
+          <h3 class="detalhe">{{op.daily}}</h3>
+          <p class="lbldetalhe">Diárias</p>
+          <h3 class="detalhe">1</h3>
+          <p class="lbldetalhe">Pessoa(s)</p>
+        </div>
+        <div class="col-sm-3 grid3">
+            <p id="aviso">$ Cancelamento Grátis</p>
+          <p class="detalhe">Por apenas:</p>
+          <h3 id="preco">{{op.price | currency}}</h3>
+          <p class="detalhe">+ taxas em até 10x</p>
+          <input type="button" id ="btnconfirma" class="btn btn-warning" value="QUERO IR">
+        </div>
+        
+        </div>
+  </div>
+  </body>
+
+</html>
