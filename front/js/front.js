@@ -6,7 +6,7 @@ var app = angular.module('ofertasApp', ['ui.bootstrap']);
 app.controller('CtrlOferta',function($scope){
 
 // initializing the time Interval
-  //$scope.myInterval = 1000;
+  $scope.myInterval = 5000;
   
  // Initializing  slide rray  
   $scope.saidas = ["Belém","Boa Vista","Brasilia","Campo Grande","Cuiabá","Ilhéus","Manaus","Rio de Janeiro","Salvador","São Paulo"];
