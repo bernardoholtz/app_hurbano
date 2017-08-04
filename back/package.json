@@ -1,0 +1,10 @@
+{
+  "name": "server-aula",
+  "description": "somente uma aula de teste",
+  "author": "Bernardo",
+  "version": "1.0.0",
+  "private": "true",
+  "dependencies": {
+    "jsonfile": "^3.0.1"
+  }
+}

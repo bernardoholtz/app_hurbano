@@ -1,9 +1,30 @@
 
+
 var app = angular.module('ofertasApp', ['ui.bootstrap']);
+var hotel_sel = [];
 
 
 // Controller  for Carousel
-app.controller('CtrlOferta',function($scope){
+app.controller('CtrlOferta',function($scope,$http){
+
+    $scope.slides = [];
+    $scope.carregar = function() {
+    
+         
+        var rs = $http.get("http://localhost:3000/");
+        rs.success(function (response) {
+          hotel_sel = response;
+          $scope.nome = hotel_sel.title;
+          $scope.local = hotel_sel.location;
+          $scope.descricao = hotel_sel.description;
+          hotel_sel.photos.forEach(function(foto){ $scope.slides.push({'image':foto}) });
+          $scope.opcoes = hotel_sel.options;          
+        });
+
+        
+     
+    
+   };
 
 // initializing the time Interval
   $scope.myInterval = 5000;
@@ -25,122 +46,9 @@ app.controller('CtrlOferta',function($scope){
   };
 
  
-  $scope.nome = "Hotel The Mirage (Hotel & Casino)" ;
-  $scope.local = "Las Vegas, USA";
-  $scope.descricao = "Aéreo de várias cidades + Hotel em Vegas";
-  $scope.destaque = "images/photo4.jpg";
-  $scope.slides = [
-	{image:"images/photo1.jpg"},
-	{image:"images/photo2.jpg"},
-	{image:"images/photo3.jpg"},
-	{image:"images/photo4.jpg"},
-	{image:"images/photo5.jpg"},
-	{image:"images/photo6.jpg"}
-  ];
 
-  $scope.opcoes =   [
-      {
-        id: 2,
-        title: "Noites em Vegas e Albuquerque",
-        description: "Atenção, quarto duplo é necessário adquirir 2 pacotes",
-        from: [
-          "Brasilia",
-          "Campo Grande"
-        ],
-        daily: 5,
-        price: 2380
-      },
-      {
-        id: 0,
-         title: "Noites em Vegas e Albuquerque",
-         description: "Atenção, quarto duplo é necessário adquirir 2 pacotes",
-         from: [
-          "Manaus",
-          "Belém"
-        ],
-         daily: 5,
-         price: 2549
-      },
-      {
-        id: 1,
-         title: "Noites em Vegas e Albuquerque",
-         description: "Atenção, quarto duplo é necessário adquirir 2 pacotes",
-         from: [
-          "Rio de Janeiro"
-        ],
-         daily: 5,
-         price: 2620
-      },
-      {
-        id: 3,
-         title: "Noites em Vegas e Albuquerque",
-         description: "Atenção, quarto duplo é necessário adquirir 2 pacotes",
-         from: [
-          "Manaus"
-        ],
-         daily: 8,
-         price: 3549
-      },
-      {
-        id: 7,
-         title: "Noites em Vegas e Albuquerque",
-         description: "Atenção, quarto duplo é necessário adquirir 2 pacotes",
-         from: [
-          "Rio de Janeiro"
-        ],
-         daily: 12,
-         price: 5120
-      },
-      {
-        id: 8,
-         title: "Noites em Vegas e Albuquerque",
-         description: "Atenção, quarto duplo é necessário adquirir 2 pacotes",
-         from: [
-          "Brasilia",
-          "Salvador",
-          "Campo Grande"
-        ],
-         daily: 12,
-         price: 5380
-      },
-      {
-        id: 4,
-         title: "Noites em Vegas e Albuquerque",
-         description: "Atenção, quarto duplo é necessário adquirir 2 pacotes",
-         from: [
-          "Rio de Janeiro",
-          "São Paulo"
-        ],
-         daily: 8,
-         price: 3720
-      },
-      {
-        id: 5,
-         title: "Noites em Vegas e Albuquerque",
-         description: "Atenção, quarto duplo é necessário adquirir 2 pacotes",
-         from: [
-          "Brasilia"
-        ],
-         daily: 8,
-         price: 3380
-      },
-      {
-        id: 6,
-         title: "Noites em Vegas e Albuquerque",
-         description: "Atenção, quarto duplo é necessário adquirir 2 pacotes",
-         from: [
-          "Manaus",
-          "Salvador",
-          "Ilhéus",
-          "Boa Vista",
-          "Cuiabá"
-        ],
-         daily: 12,
-         price: 5549
-      }
-    ];
+  //$scope.destaque = "images/photo4.jpg";
  
-
  
 }); // Controller Ends here
 

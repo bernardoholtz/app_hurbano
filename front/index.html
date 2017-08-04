@@ -3,9 +3,10 @@
 	<head>
 		<title>Ofertas</title>
 		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> 
+				<script type="text/javascript" src="https://code.angularjs.org/1.5.7/angular.min.js"></script>
 		<script src="bower_components/angular-locale-pt-br/angular-locale_pt-br.js"></script>
 		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/front.js"></script>
@@ -18,8 +19,8 @@
 		
 
 	</head>
-	<body>
-		<div class="container-fluid" id="ofertasApp" ng-controller="CtrlOferta">
+	<body ng-controller="CtrlOferta">
+		<div class="container-fluid" id="ofertasApp"  ng-init='carregar()'>
 		   <div class="row header">
 				<div class="col-md-12 thumb">
 					<h2>{{nome}}</h2>
