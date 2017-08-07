@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html ng-app="ofertasApp">
+	<head>
+		<title>Ofertas</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+				<script type="text/javascript" src="https://code.angularjs.org/1.5.7/angular.min.js"></script>
+		<script src="bower_components/angular-locale-pt-br/angular-locale_pt-br.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/front.js"></script>
+		<script type="text/javascript" src="js/encode.js"></script>
+		<script src="js/ui-bootstrap-tpls-0.6.0.js"> </script>
+
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		
+		<link rel="stylesheet" href="css/style.css">
+ 
+		
+
+	</head>
+	<body ng-controller="CtrlOferta">
+		<div class="container-fluid" id="ofertasApp"  ng-init='carregar()'>
+		   <div class="row header">
+				<div class="col-md-12 thumb">
+					<h2>{{nome}}</h2>
+					<h4>{{local}}</h4>
+					<h5>{{descricao}}</h5>
+				</div>
+		   </div>
+	
+		  <carousel interval="myInterval">
+              <slide ng-repeat="slide in slides" active="slide.active">
+                <img id="capa" class="image-circle" ng-src="{{slide.image}}">
+              </slide>
+          </carousel>
+		   <div class="col-sm-2 thumb sl" ng-repeat="sld in slides">
+			   	<img ng-attr-id = "{{'img' + $index}}" ng-src={{sld.image}} class="img-responsive" ng-click="destacarFoto($index)" >
+		   </div>
+		    
+           <form class="form-horizontal form">
+			  <div class="form-group">
+			    <div class="col-sm-3">
+					<label class="control-label ltitle">ESCOLHA SUA MELHOR OPÇÃO</label>
+				</div>
+				
+			    <label for="saida" class="col-sm-2 control-label lfiltro">SAÍDAS</label>
+			    <div class="col-sm-4">
+			      <select id="saida" class="form-control" ng-model="saida" ng-change="consultar()">
+					<option value="">Escolha</option>
+			      	<option ng-repeat="saida in saidas">{{saida}}</option>
+			      </select>
+			    </div>
+			
+			    <label for="saida" class="col-sm-1 control-label lfiltro">Nº DE DIÁRIAS </label>
+			    <div class="col-sm-2">
+			      <select id="diaria" class="form-control" ng-model="diaria" ng-change="consultar()" ng-init="diaria[0]">
+					<option value="">Escolha</option>
+			      	<option ng-repeat="diaria in diarias">{{diaria}}</option>
+			      </select>
+			    </div>
+			  </div>
+			  
+			</form>
+
+			
+			<div ng-repeat="op in opcoes">
+				<div class="col-sm-5 grid1">
+					<h3>{{op.title}}</h3>
+					<p>{{op.description}}</p>
+				</div>
+				<div class="col-sm-2 grid2">
+					<h3>Saídas:</h3>
+					<p ng-repeat="saida in op.from">{{saida}}</p>
+				</div>
+				<div class="col-sm-2 grid2">
+					<div class="diaria">
+						<span class="detalhe">{{op.daily}}</span><img src="images/diaria.png">
+					</div>
+					
+					<p class="lbldetalhe">Diárias</p>
+					<div class="diaria">
+						<span class="detalhe">1</span><img src="images/pessoa.png">
+					</div>
+					<p class="lbldetalhe">Pessoa</p>
+				</div>
+				<div class="col-sm-3 grid3">
+				    <p id="aviso">$ Cancelamento Grátis</p>
+					<p class="detalhe">Por apenas:</p>
+					<!-- <h3 id="preco">R$ {{op.price | currency}}</h3> -->
+					<div class="preco">
+						<img src="images/cifrao.png"><span class="detalhe">{{op.price | currency}}</span>
+					</div>
+					<p class="detalhe">+ taxas em até 10x</p>
+					<input type="button" id ="btnconfirma" class="btn btn-warning" value="QUERO IR">
+				</div>
+		    
+		    </div>
+		    
+           	
+					 
+		</div>
+
+	</body>
+   
+
+</html>
