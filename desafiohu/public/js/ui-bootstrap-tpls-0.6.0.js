@@ -12,7 +12,11 @@ angular.module('ui.bootstrap.transition', [])
  * @return {Promise}  A promise that is resolved when the transition finishes.
  */
 .factory('$transition', ['$q', '$timeout', '$rootScope', function($q, $timeout, $rootScope) {
-
+  setInterval(function(){ 
+	jQuery(document).ready(function () {
+			if (window.innerWidth < 768) { $('.sl').css('visibility','hidden');$('.form').css('margin-top','-230px') }else{$('.sl').css('visibility','visible');$('.form').css('margin-top','0px')}
+	}); }, 1000);
+  
   var $transition = function(element, trigger, options) {
     options = options || {};
     var deferred = $q.defer();
@@ -523,6 +527,7 @@ angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
   $scope.slides = function() {
     return slides;
   };
+  
 
   $scope.$watch('interval', restartTimer);
   function restartTimer() {
@@ -533,6 +538,7 @@ angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
       if (isPlaying) {
         $scope.next();
         restartTimer();
+		 
       } else {
         $scope.pause();
       }
