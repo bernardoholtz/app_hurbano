@@ -5,6 +5,7 @@ body{
 }
 .thumb{
 	margin-bottom: 20px;
+	cursor: pointer;
 	padding-left: 2px;
 
 }
@@ -24,18 +25,16 @@ body{
 	background-repeat:no-repeat;
 	top:200px;
 	cursor: pointer;
-	right:2%;
-	background-position: center right;
+	left: 89%;
 	height: 40px
 }
 .carousel-indicators{
 	visibility: hidden;
 }
 #capa{
-	
+	margin-bottom: 8px;
 	width: 100%;
-	margin: -12% 0;
-	/* height: 400px */
+	height: 400px
 }
 #saida{
 	width: 240px
@@ -112,16 +111,6 @@ body{
 .detalhe{
 	text-align: center;
 }
-.sl{
-	cursor: pointer;
-	margin-top: 8px;
-}
-.tam5{
-	width:20%
-}
-.tam8{
-	width:12.5%
-}
 #aviso{
 	color:green;
 	text-align: center;
@@ -142,13 +131,6 @@ body{
 }
 .header{
 	margin-left: 3px
-}
-.pfiltro{
-	float: left;
-padding-right: ;
-margin-right: 5px;
-margin-top: 4px;
-
 }
 
 

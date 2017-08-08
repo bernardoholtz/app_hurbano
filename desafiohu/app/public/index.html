@@ -28,15 +28,15 @@
 					<h5>{{descricao}}</h5>
 				</div>
 		   </div>
-		
+	
 		  <carousel interval="myInterval">
               <slide ng-repeat="slide in slides" active="slide.active">
                 <img id="capa" class="image-circle" ng-src="{{slide.image}}">
               </slide>
           </carousel>
-		   <div class="col-sm-2 thumb sl" ng-repeat="sld in slides">
+		   <!-- <div class="col-sm-2 thumb sl" ng-repeat="sld in slides">
 			   	<img ng-attr-id = "{{'img' + $index}}" ng-src={{sld.image}} class="img-responsive" ng-click="destacarFoto($index)" >
-		   </div>
+		   </div> -->
 		    
            <form class="form-horizontal form">
 			  <div class="form-group">
@@ -46,12 +46,12 @@
 				
 			    <label for="saida" class="col-sm-2 control-label lfiltro">SAÍDAS</label>
 			    <div class="col-sm-4">
-			      <select id="saida" class="form-control" ng-model="saida" ng-change="consultar()">
+			      <select id="saida" class="form-control select_box" ng-model="saida" ng-change="consultar()">
 					<option value="">Escolha</option>
 			      	<option ng-repeat="saida in saidas">{{saida}}</option>
 			      </select>
 			    </div>
-				
+			
 			    <label for="saida" class="col-sm-1 control-label lfiltro">Nº DE DIÁRIAS </label>
 			    <div class="col-sm-2">
 			      <select id="diaria" class="form-control" ng-model="diaria" ng-change="consultar()" ng-init="diaria[0]">
@@ -59,7 +59,6 @@
 			      	<option ng-repeat="diaria in diarias">{{diaria}}</option>
 			      </select>
 			    </div>
-				
 			  </div>
 			  
 			</form>
