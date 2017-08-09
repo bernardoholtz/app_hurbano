@@ -22,3 +22,4 @@ require('./app/routes.js')(app);
 
 app.listen(port);
 console.log("Server rodando na porta " + port);
+require("openurl").open("http://localhost:8080");

@@ -9,33 +9,37 @@ app.controller('CtrlOferta',function($scope,$http){
 
     
 	$scope.carregar = function() {
-    
-		$scope.slides = [];	
 		// faz um get ao server para obter o hotel em destaque
-		$http.get('/api/oferta')
-            .success(function(data) {
-				 
-				  hotel = data;
+		   $http({
+			  method: 'GET',
+			  url: '/api/oferta'
+		   }).then(function (data){
+			      $scope.slides = [];			
+				  hotel = data.data;
+				  $scope.hotel = hotel;
 				  $scope.id = hotel.id;
 				  $scope.nome = hotel.title;
 				  $scope.local = hotel.location;
 				  $scope.descricao = hotel.description;
-				  hotel.photos.forEach(function(foto){ $scope.slides.push({'image':foto}) });
-				  jQuery(document).ready(function () {
-					  if (hotel.photos.length == 5){
-						  $('.sl').addClass('tam5');
-					  }else if (hotel.photos.length == 8){
-						  $('.sl').addClass('tam8');
-					  };
-				  });
+				  if (hotel.photos != undefined){
+					  hotel.photos.forEach(function(foto){ $scope.slides.push({'image':foto}) });
+					  jQuery(document).ready(function () {
+						  if (hotel.photos.length == 5){
+							  $('.sl').addClass('tam5');
+						  }else if (hotel.photos.length == 8){
+							  $('.sl').addClass('tam8');
+						  };
+					  });  
+				  }
+				  
 				  $scope.opcoes = hotel.options; 
 				  $scope.diarias = hotel.diarias;
-                  $scope.saidas = hotel.saidas;
-            })
-            .error(function(data) {
-                alert('Error: ' + data);
-          });
-		       
+                  $scope.saidas = hotel.saidas;	
+		   },function (error){
+			//alert('Error: ' + data);
+		   });
+    
+				       
      
     
    };
@@ -45,24 +49,25 @@ app.controller('CtrlOferta',function($scope,$http){
 		var saida = $scope.saida == null ? "" : $scope.saida;
 		var diaria = $scope.diaria == null ? "" : $scope.diaria;
 		var filtro = [$scope.id,saida,diaria];
-		$http.post('/api/oferta', filtro)
-            .success(function(data) {
-				  var hotel_sel = [];
-				  hotel_sel = data;
-				  $scope.opcoes = hotel_sel.options; 
 			
-                
-            })
-            .error(function(data) {
-                alert('Error: ' + data);
-          });
-	
-     
+		$http({
+			  method: 'POST',
+			  url: '/api/oferta',
+			  data: filtro
+		   }).then(function (data){
+			      var hotel_sel = [];
+				  hotel_sel = data.data;
+				  $scope.hotel = hotel_sel;
+				  $scope.opcoes = hotel_sel.options; 
+		   },function (error){
+			//alert('Error: ' + data);
+		   });
+    
     
    };
    
     $scope.recarregaDiaria = function() {
-		//recarrega o select de diárias de acordo com a cidade de saída escolhida
+		// recarrega o select de diárias de acordo com a cidade de saída selecionada
 		if ($scope.saida !=""){
 			$scope.diarias = [];
 			for (var j=0; j<hotel.options.length; j++){
