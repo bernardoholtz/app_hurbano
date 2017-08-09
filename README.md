@@ -1,6 +1,6 @@
 Desafio Página Ofertas
 
-Segue comandos para executar aplicação:
+Lista de comandos para executar aplicação:
 
 1)Clonar projeto
 
