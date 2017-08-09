@@ -22,7 +22,7 @@ npm install -g karma-cli
 
 npm install angular angular-mocks --save-dev
 
-npm install karma-spec
+npm install karma-spec-reporter --save-dev
 
 5)Executar testes
 
