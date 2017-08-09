@@ -67,7 +67,7 @@ app.controller('CtrlOferta',function($scope,$http){
    };
    
     $scope.recarregaDiaria = function() {
-		// recarrega o select de diárias de acordo com a cidade de saída selecionada
+		//recarrega o select de diárias de acordo com a cidade de saída escolhida
 		if ($scope.saida !=""){
 			$scope.diarias = [];
 			for (var j=0; j<hotel.options.length; j++){

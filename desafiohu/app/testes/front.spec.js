@@ -130,11 +130,11 @@ describe('CtrlOferta', function() {
   }));
 
   describe('Valida objeto', function() {
-    it('deve validar o formato de um shot', function() {
+    it('deve validar o formato de uma oferta', function() {
       var $scope = {};
       var controller = $controller('CtrlOferta', { $scope: $scope });
 	  $scope.hotel = oferta;	
-	  expect($scope.hotel.id).toBeNumber;
+	  expect($scope.hotel).toEqual(jasmine.any(Object));
     });
 	
   });

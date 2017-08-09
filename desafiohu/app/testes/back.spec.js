@@ -4,7 +4,7 @@ describe("Teste de http", function() {
   
   
   
-  describe("Método Get", function() {
+  describe("Testa a comunicação com o back", function() {
     var ctrl, scope, httpBackend, oferta;
 
     beforeEach(inject(function($httpBackend, $rootScope, $controller) {
@@ -141,7 +141,7 @@ describe("Teste de http", function() {
 
     describe("carregar()", function() {
 
-      it('Deve testar a request GET da páginas de ofertas', function() {
+      it('Deve testar a request GET da página de ofertas', function() {
         scope.carregar();
 
         httpBackend.expectGET('/api/oferta');
